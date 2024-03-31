@@ -1,0 +1,125 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6qugfesl1b85"]
+
+[ext_resource type="Script" path="res://Code/AddtransactionWindow.cs" id="1_60un6"]
+
+[node name="AddtransactionWindow" type="Panel" node_paths=PackedStringArray("IncomeButton", "DateInputLine", "NameInputLine", "AmountInputLine", "TypeInputLine")]
+offset_left = 701.0
+offset_top = 167.0
+offset_right = 1033.0
+offset_bottom = 482.0
+script = ExtResource("1_60un6")
+IncomeButton = NodePath("VBoxContainer/income/LineEdit")
+DateInputLine = NodePath("VBoxContainer/Data/LineEdit")
+NameInputLine = NodePath("VBoxContainer/Name/LineEdit")
+AmountInputLine = NodePath("VBoxContainer/Amount/LineEdit")
+TypeInputLine = NodePath("VBoxContainer/Type/LineEdit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = 28.0
+offset_right = -25.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Data" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Data" type="RichTextLabel" parent="VBoxContainer/Data"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Data"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Data"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.75
+
+[node name="Name" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/Name"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Name"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Name"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.75
+
+[node name="Amount" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Amount" type="RichTextLabel" parent="VBoxContainer/Amount"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Amount"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Amount"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.75
+
+[node name="Type" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Type" type="RichTextLabel" parent="VBoxContainer/Type"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Type"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Type"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.75
+
+[node name="income" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Type" type="RichTextLabel" parent="VBoxContainer/income"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Income"
+fit_content = true
+
+[node name="LineEdit" type="CheckButton" parent="VBoxContainer/income"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Cancal" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -147.0
+offset_top = -49.0
+offset_right = -41.0
+offset_bottom = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Cancel"
+
+[node name="Add" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -49.0
+offset_right = -182.0
+offset_bottom = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Add"
+
+[connection signal="button_down" from="Cancal" to="." method="_on_cancal_button_down"]
+[connection signal="button_down" from="Add" to="." method="_on_add_button_down"]

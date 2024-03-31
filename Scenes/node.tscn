@@ -1,21 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnej7y738dp3v"]
+[gd_scene load_steps=6 format=3 uid="uid://bnej7y738dp3v"]
 
 [ext_resource type="Script" path="res://Code/AppManager.cs" id="1_41kta"]
 [ext_resource type="PackedScene" uid="uid://co67gvdaodn13" path="res://Scenes/transaction_row.tscn" id="2_1vjd8"]
+[ext_resource type="PackedScene" uid="uid://b6qugfesl1b85" path="res://Scenes/addtransaction_window.tscn" id="3_1wjth"]
+[ext_resource type="Texture2D" uid="uid://d31a4i126eyld" path="res://Sprit2-export.png" id="4_dqftl"]
+[ext_resource type="Texture2D" uid="uid://cjlnyomt1djj2" path="res://Sprit1-export.png" id="5_8rljp"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("IncomeLabel", "IncomeAmountLabel", "ExpensesLabel", "ExpensesAmountLabel")]
+[node name="Control" type="Control" node_paths=PackedStringArray("PieChart", "TransactionListHolder", "IncomeLabel", "IncomeAmountLabel", "ExpensesLabel", "ExpensesAmountLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 21.0
+offset_right = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_41kta")
+PieChart = NodePath("Pie")
 TransactionList = ExtResource("2_1vjd8")
+TransactionListHolder = NodePath("ScrollContainer/TransactionList")
+AddTransactionMenu = ExtResource("3_1wjth")
 IncomeLabel = NodePath("headers/Income")
-IncomeAmountLabel = NodePath("headers2/IncomeAmount")
+IncomeAmountLabel = NodePath("TotalInE/IncomeAmount")
 ExpensesLabel = NodePath("headers/Expense")
-ExpensesAmountLabel = NodePath("headers2/ExpensesAmount")
+ExpensesAmountLabel = NodePath("TotalInE/ExpensesAmount")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -62,7 +70,7 @@ bbcode_enabled = true
 text = "[center][b]Expense"
 fit_content = true
 
-[node name="headers2" type="HBoxContainer" parent="."]
+[node name="TotalInE" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -73,7 +81,7 @@ offset_right = -523.0
 offset_bottom = 270.0
 grow_horizontal = 0
 
-[node name="IncomeAmount" type="RichTextLabel" parent="headers2"]
+[node name="IncomeAmount" type="RichTextLabel" parent="TotalInE"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -82,7 +90,7 @@ bbcode_enabled = true
 text = "[center][b]1000"
 fit_content = true
 
-[node name="ExpensesAmount" type="RichTextLabel" parent="headers2"]
+[node name="ExpensesAmount" type="RichTextLabel" parent="TotalInE"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -90,3 +98,34 @@ theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
 text = "[center][b]1000"
 fit_content = true
+
+[node name="Add transaction" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -68.0
+offset_right = -43.0
+offset_bottom = -34.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 18
+text = "+"
+
+[node name="Pie" type="TextureProgressBar" parent="."]
+layout_mode = 2
+offset_left = 678.0
+offset_top = 34.0
+offset_right = 879.0
+offset_bottom = 221.0
+size_flags_horizontal = 3
+max_value = 100.265
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("4_dqftl")
+texture_progress = ExtResource("5_8rljp")
+
+[connection signal="button_down" from="Add transaction" to="." method="_on_add_transaction_button_down"]
