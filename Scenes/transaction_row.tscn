@@ -2,6 +2,8 @@
 
 [node name="TransactionRow" type="HBoxContainer"]
 custom_minimum_size = Vector2(0, 70)
+offset_right = 588.0
+offset_bottom = 70.0
 
 [node name="Data" type="RichTextLabel" parent="."]
 layout_mode = 2
@@ -19,6 +21,12 @@ fit_content = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "100,000"
+fit_content = true
+
+[node name="DepositOrWithdrawl" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "home is a long value"
 fit_content = true
 
 [node name="Type" type="RichTextLabel" parent="."]

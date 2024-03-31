@@ -26,7 +26,7 @@ public partial class AppManager : Node
 
 		};
 		
-		//loadCSV("C:/Users/anime/Desktop/BanksRecords.csv");
+		loadCSV("C:/Users/anime/Desktop/cShapeGodot/Records.csv");
 		UpdateTransactionList();
 	
 	}
@@ -52,7 +52,7 @@ public partial class AppManager : Node
 		};
 
 
-		if(!Income){
+		if(Income){
 			currentBudget.Expenses.Add(transaction);
 		
 		
@@ -77,6 +77,7 @@ public partial class AppManager : Node
 			tableRow.GetNode<RichTextLabel>("Name").Text = value.Name;
 			tableRow.GetNode<RichTextLabel>("Amount").Text = value.Amount.ToString();
 			tableRow.GetNode<RichTextLabel>("Type").Text = value.Type;
+			tableRow.GetNode<RichTextLabel>("DepositOrWithdrawl").Text = "Withdrawl";
 			container.AddChild(tableRow);
 			ExpensesAmount += value.Amount;
 		}
@@ -90,6 +91,7 @@ public partial class AppManager : Node
 			tableRow.GetNode<RichTextLabel>("Name").Text = value.Name;
 			tableRow.GetNode<RichTextLabel>("Amount").Text = value.Amount.ToString();
 			tableRow.GetNode<RichTextLabel>("Type").Text = value.Type;
+			tableRow.GetNode<RichTextLabel>("DepositOrWithdrawl").Text = "Deposit";
 			container.AddChild(tableRow);
 			IncomeAmount += value.Amount;
 		}
@@ -109,13 +111,13 @@ public partial class AppManager : Node
 		}
 
 		foreach(var tableRow in parsedDate){
-			if (tableRow[0] == "Account Number"){
+			if (tableRow[0] == "Date"){
 				continue;
 			}
 			
 			AddTransactionToTransction(tableRow[1],tableRow[0],
-			tableRow[2] != "" ? float.Parse(tableRow[2]) : float.Parse(tableRow[3]),
-			"home", tableRow[3] =="");
+			float.Parse(tableRow[2]) != 0.0 ? float.Parse(tableRow[2]) : float.Parse(tableRow[3]),
+			"home", float.Parse(tableRow[2]) != 0.0);
 		};
 		
 

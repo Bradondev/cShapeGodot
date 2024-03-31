@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://p43by0lksc4l"
+
+[deps]
+
+files=["res://Records.Description.translation", "res://Records.Deposits.translation", "res://Records.Withdrawls.translation", "res://Records.Balance.translation"]
+
+source_file="res://Records.csv"
+dest_files=["res://Records.Description.translation", "res://Records.Deposits.translation", "res://Records.Withdrawls.translation", "res://Records.Balance.translation"]
+
+[params]
+
+compress=true
+delimiter=0
